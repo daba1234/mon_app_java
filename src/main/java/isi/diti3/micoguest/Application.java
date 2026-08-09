@@ -10,9 +10,9 @@ import java.io.IOException;
 public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("/isi/diti3/micoguest/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("/fxml/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Connexion");
+        stage.setTitle("MicroGest");
         stage.setScene(scene);
         stage.show();
     }
