@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="14.0" style="-fx-background-color: #f5f2ef;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.microgest.controller.ManagementController">
+   <children>
+      <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: #5b3218; -fx-padding: 16;">
+         <children>
+            <Label text="MicroGest - Espace Adhérents" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <StackPane HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#onRefreshDashboardClick" text="Rafraîchir les données" />
+         </children>
+      </HBox>
+      <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+         <tabs>
+            <Tab text="Tableau de bord">
+               <content>
+                  <ScrollPane fitToHeight="true" fitToWidth="true">
+                     <content>
+                        <VBox spacing="16.0" style="-fx-padding: 18;">
+                           <children>
+                              <GridPane hgap="14.0" vgap="14.0">
+                                 <children>
+                                    <VBox spacing="6.0" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                       <children>
+                                          <Label text="Total adhérents" />
+                                          <Label fx:id="totalAdherentsLabel" text="0">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="6.0" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16;" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                       <children>
+                                          <Label text="Adhérents actifs" />
+                                          <Label fx:id="activeAdherentsLabel" text="0">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="6.0" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16;" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                                       <children>
+                                          <Label text="Opérations (mois)" />
+                                          <Label fx:id="operationsMonthLabel" text="0">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="6.0" style="-fx-background-color: white; -fx-background-radius: 14; -fx-padding: 16;" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                                       <children>
+                                          <Label text="Total épargne" />
+                                          <Label fx:id="totalSavingsLabel" text="0">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </GridPane>
+                              <HBox spacing="16.0">
+                                 <children>
+                                    <PieChart fx:id="statutPieChart" legendVisible="true" prefHeight="380.0" prefWidth="420.0" title="Répartition des statuts" HBox.hgrow="ALWAYS" />
+                                    <BarChart fx:id="operationsBarChart" categoryGap="18.0" prefHeight="380.0" prefWidth="620.0" title="Opérations par mois" HBox.hgrow="ALWAYS">
+                                       <xAxis>
+                                          <CategoryAxis label="Mois" />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis label="Nombre d'opérations" />
+                                       </yAxis>
+                                    </BarChart>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+            <Tab text="Adhérents">
+               <content>
+                  <fx:include fx:id="adherentListView" source="adherent-list.fxml" />
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+   <padding>
+      <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+   </padding>
+</VBox>
