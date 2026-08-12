@@ -68,7 +68,7 @@ public class UtilisateurRepository {
     }
 
     public boolean update(Utilisateur utilisateur) {
-        String sql = "UPDATE utilisateur SET username = ?, password_hash = ?, email = ?, role = ?, agence_id = ?, actif = ? WHERE id = ?";
+        String sql = "UPDATE utilisateur SET username = ?, password_hash = ?, email = ?, role = ?::role_enum, agence_id = ?, actif = ? WHERE id = ?";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, utilisateur.getUsername());
